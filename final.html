@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Please enter the password to access the file:</h2>
+        <input type="password" id="password-input" placeholder="Password">
+        <button onclick="checkPassword()">Submit</button>
+        <p id="message"></p>
+    </div>
+    <div id="content" style="display: none;">
+        <a href="Doc1.docx" download="Doc1.docx"><button >Download</button></a>
+    </div>
+    <script>
+    const passwordInput = document.getElementById('password-input');
+const message = document.getElementById('message');
+const content = document.getElementById('content');
+const downloadLink = document.getElementById('download-link');
+
+const correctPassword = 'starimpossibleicepotter';
+
+function checkPassword() {
+    const enteredPassword = passwordInput.value;
+    if (enteredPassword === correctPassword) {
+        message.innerText = 'Password is correct. Redirecting...';
+        setTimeout(() => {
+            // Show the protected content and the download link
+            document.getElementById('login-container').style.display = 'none';
+            content.style.display = 'block';
+            downloadLink.style.display = 'block';
+
+            // Set the file URL you want to download
+            const fileURL = 'as.txt';
+            
+            // Set the desired filename for the downloaded file
+            const fileName = 'as.txt';
+
+            // Create a download link
+            downloadLink.href = fileURL;
+            downloadLink.download = fileName;
+        }, 1000); // Adjust the time as needed
+    } else {
+        message.innerText = 'Incorrect password. Please try again.';
+    }
+}
+
+        </script>
+</body>
+</html>

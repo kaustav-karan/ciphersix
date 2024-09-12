@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <style>
+        body {
+        margin: 0;
+        overflow: hidden;
+        }
+    
+        #lock-container {
+        position: absolute;
+        top: 50%;
+        left: 90%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        cursor: none;
+        }
+        
+            </style>
+    <div id="lock-container">
+        <div id="lock-icon"><a href="final.html">sapo</a></div>
+    </div>
+    <h1>Music Player</h1>
+    <audio id="audio" controls>
+        <source src="audio.mp3" type="audio/mpeg">
+    </audio>
+    <button id="playButton">Play</button>
+    <button id="downloadButton">Download Audio</button>
+    <button id="downloadZipButton">Download ZIP</button>
+ <script>
+    const audio = document.getElementById('audio');
+    const playButton = document.getElementById('playButton');
+    const downloadButton = document.getElementById('downloadButton');
+    const downloadZipButton = document.getElementById('downloadZipButton');-
+
+    playButton.addEventListener('click', function () {
+        if (audio.paused) {
+            audio.play();
+            playButton.textContent = 'Pause';
+        } else {
+            audio.pause();
+            playButton.textContent = 'Play';
+        }
+    });
+
+    downloadButton.addEventListener('click', function () {
+        const audioSource = document.querySelector('audio source').getAttribute('src');
+        const a = document.createElement('a');
+        a.href = 'Main.rar';
+        a.download = 'Main.rar';
+        a.click();
+    });
+
+    downloadZipButton.addEventListener('click', function () {
+        const zipLink = document.createElement('a');
+        zipLink.href = '';
+        zipLink.download = '';
+        zipLink.click();
+    });
+</script>
+
+</body>
+</html>
